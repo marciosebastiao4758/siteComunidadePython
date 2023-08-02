@@ -45,7 +45,7 @@ def login():
     if form_criarConta.validate_on_submit() and 'botao_submit_confirmacao' in request.form:
         # criou a conta com sucesso
         # criar senha criptografada
-        senha = bcrypt.generate_password_hash(form_criarConta.senha.data)
+        senha = bcrypt.generate_password_hash(form_criarConta.senha.data).decode("utf-8")
         # criar o usuário
         usuario = Usuario(username=form_criarConta.username.data, email=form_criarConta.email.data, senha=senha)
 
